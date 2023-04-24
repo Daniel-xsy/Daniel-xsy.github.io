@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Towards Robust Bird's Eye View Perception under Common Corruption and Domain Shift.">
+  <meta name="keywords" content="3D Perception, Robustness, Bird's Eye View">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RoboBEV</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/logo.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://keunhong.com">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://ldkong.com/Robo3D">
+            Robo3D
+          </a>
+          <a class="navbar-item" href="https://github.com/ldkong1205/RoboDepth">
+            RoboDepth
+          </a>
+          <a class="navbar-item" href="https://pointcloud-c.github.io/home.html">
+            PointCloud-C
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">RoboBEV: Towards Robust Bird's Eye View Perception under Common Corruption and Domain Shift</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=s1m55YoAAAAJ">Shaoyuan Xie</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=-j1j7TkAAAAJ">Lingdong Kong</a><sup>2,3</sup>,</span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=QDXADSEAAAAJ">Wenwei Zhang</a><sup>2,4</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=YUKPVCoAAAAJ">Jiawei Ren</a><sup>4</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=lSDISOcAAAAJ">Liang Pan</a><sup>4</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=eGD0b7IAAAAJ">Kai Chen</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=lc45xlcAAAAJ">Ziwei Liu</a><sup>4</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>HUST, </span>
+            <span class="author-block"><sup>2</sup>Shanghai AI Laboratory, </span>
+            <span class="author-block"><sup>3</sup>NUS, </span>
+            <span class="author-block"><sup>4</sup>S-Lab, Nanyang Technological University</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2304.06719"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2304.06719"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link.
+              <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/Daniel-xsy/RoboBEV"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark"
+                   target="_blank">
+                  <span class="icon">
+                      <i class="fas fa-database"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img id="teaser" height="100%" src="./static/images/teaser.png">
+      <h2 class="subtitle has-text-centered">
+        RoboBEV Corruption examples. Left: Corruption taxonomy. Right: Temporal corruptions.
+      </h2>
+    </div>
+  </div>
+</section> -->
+
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/demo1.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/demo2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/demo3.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/demo4.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            The recent advances in camera-based bird's eye view (BEV) representation exhibit great potential 
+            for in-vehicle 3D perception. Despite the substantial progress achieved on standard benchmarks, 
+            the robustness of BEV algorithms has not been thoroughly examined, which is critical for safe 
+            operations. To bridge this gap, we introduce RoboBEV, a comprehensive benchmark suite that 
+            encompasses eight distinct corruptions, including <i>Bright</i>, <i>Dark</i>, <i>Fog</i>, <i>Snow</i>, 
+            <i>Motion Blur</i>, <i>Color Quant</i>, <i>Camera Crash</i>, and <i>Frame Lost</i>. 
+            Based on it, we undertake extensive evaluations across a wide range of BEV-based models to understand 
+            their resilience and reliability. Our findings indicate a strong correlation between absolute 
+            performance on in-distribution and out-of-distribution datasets. Nonetheless, there are considerable 
+            variations in relative performance across different approaches. Our experiments further demonstrate 
+            that pre-training and depth-free BEV transformation has the potential to enhance out-of-distribution 
+            robustness. Additionally, utilizing long and rich temporal information largely helps with robustness. 
+            Our findings provide valuable insights for designing future BEV models that can achieve both accuracy 
+            and robustness in real-world deployments.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!--/ Taxonomy. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Taxonomy</h2>
+    
+        <div class="pipeline">
+          <img 
+            src="./static/images/teaser.png"
+            class="pipeline image"
+            alt="pipeline image"
+          />
+        </div>
+    
+        <div class="content has-text-justified">
+          <p>
+            We simulate eight corruption types from three categories: <br>
+              1) Severe weather conditions; <br>
+              2) Image distortions that are caused by motion or quantization; <br> 
+              3) Camera failure, including camera crash and frame lost. <br>
+            Each corruption is further split into three severities (easy, moderate, and hard).
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Taxonomy. -->
+
+    <!--/ Benchmark. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Benchmark</h2>
+    
+        <div class="pipeline">
+          <img 
+            src="./static/images/benchmark.png"
+            class="pipeline image"
+            alt="pipeline image"
+          />
+        </div>
+    
+        <div class="content has-text-justified">
+          <p>
+            Benchmarking results of <b>26</b> Camera-based bird's eye view (BEV) models on the <i>nuScenes-C</i> datasets 
+            across <b>8</b> corruptions under <b>3</b> severities. To further investigate the behavior of the model's robustness, we break down BEV detectors into various components:
+          </p>
+          <p>
+            (1) <b>Training strategy</b> (<i>e.g.</i>, FCOS3D pretraining and CBGS); <br>
+            (2) <b>Model architecture</b> (<i>e.g.</i>, backbone); <br>
+            (3) <b>Approach pipeline</b> (<i>e.g.</i>, temporal cue learning and depth estimation).
+          </p>
+        </div>
+
+        <div class="pipeline">
+          <img 
+            src="./static/images/depth-pretrain.png"
+            class="pipeline image"
+            alt="pipeline image"
+          />
+        </div>
+        <br>
+        <div class="content has-text-justified">
+          <p>
+            We find pre-training and depth-free BEV transformation has the potential to enhance out-of-distribution 
+            robustness. Additionally, utilizing long and rich temporal information largely helps with robustness.
+          </p>
+        </div>
+
+        <div class="pipeline">
+          <img 
+            src="./static/images/temporal.png"
+            class="pipeline image"
+            alt="pipeline image"
+          />
+        </div>
+        <br>
+        <div class="content has-text-justified">
+          <p>
+            We further find temporal fusion has the potential to yield better absolute performance under corruptions. 
+            Fusing longer temporal information largely helps with robustness for <i>Camera Crash</i> and <i>Frame Lost</i>.
+          </p>
+        </div>
+
+      </div>
+    </div>
+    <!--/ Benchmark. -->
+
+    <!--/ Dataset. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Dataset</h2>
+        <div class="content has-text-justified">
+          <p>
+            Comming soon!
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Dataset. -->
+
+    <!--/ Future Works. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Future Works</h2>
+        <div class="content has-text-justified">
+          <p>
+            We will incorporate <b>Unsupervised Domain Adaptation</b> (UDA) into RoboBEV, stay tuned!
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Future Works. -->
+
+</section>
+
+
+
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{xie2023robobev,
+      title = {RoboBEV: Towards Robust Bird's Eye View Perception under Corruptions},
+      author = {Xie, Shaoyuan and Kong, Lingdong and Zhang, Wenwei and Ren, Jiawei and Pan, Liang and Chen, Kai and Liu, Ziwei},
+      journal = {arXiv preprint arXiv:2304.06719}, 
+      year = {2023}
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <!-- <div class="content has-text-centered">
+      <a class="icon-link"
+         href="https://homes.cs.washington.edu/~kpar/nerfies/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div> -->
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            The source code of this website is borrowed from 
+            <a href="https://github.com/nerfies/nerfies.github.io">NeRFies</a>.
+          </p>
+          <p>
+            This website is under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
