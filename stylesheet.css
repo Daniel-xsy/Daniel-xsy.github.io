@@ -133,3 +133,16 @@ span.highlight {
 .first-author-highlight {
   background-color: #ffffd0;
 }
+
+.github-star-badge {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.github-star-badge img {
+  vertical-align: middle;
+}
+
+.paper-subrow {
+  margin-top: 6px;
+}
